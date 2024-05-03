@@ -24,4 +24,26 @@ else
     echo -e "$G You Already Sudo User $N"
 fi
 
+VALIDATE()
+{
+    if [ $? -ne 0 ]
+    then 
+        echo -e "$R FAILED $N"
+    else
+         echo -e "$G SUCCESS $N"
+    fi 
+}
 
+dnf install mysql-server
+VALIDATE $? "Your mysql-server Installation is :: " 
+
+dnf enable mysqld
+VALIDATE $? "Your mysql-server Enablind is :: " 
+
+dnf start mysqld
+VALIDATE $? "Your mysql-server Starting is :: " 
+
+mysql_secure_installation --set-root-pass -p$(DB_Password) &>>$LOG_FILE
+VALIDATE $? "Your mysql-server set up password is :: " 
+
+echo -e "$Y Mysql Installation is going G O O D...$N"
