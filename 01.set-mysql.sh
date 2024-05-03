@@ -12,8 +12,8 @@ SRCIPT_NAME=$(echo "$0" | cut -d "." -%f1)
 # logFile
 LOG_FILE=/tmp/$SRCIPT_NAME+$TIME_STAMP.log
 
-#echo "Please Enter Your mysql root password : "
-#read DB_Password
+echo "Please Enter Your mysql root password : "
+read DB_Password
 
 # UserId # 
 USER_ID=$(id -u)
@@ -43,8 +43,18 @@ VALIDATE $? "Your mysql-server Enablind is :: "
 systemctl start mysqld &>>$LOG_FILE
 VALIDATE $? "Your mysql-server Starting is :: " 
 
-mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOG_FILE
+#mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOG_FILE
 #mysql_secure_installation --set-root-pass -p$(DB_Password) &>>$LOG_FILE
-VALIDATE $? "Your mysql-server set up password is :: " 
+#VALIDATE $? "Your mysql-server set up password is :: " 
+
+
+mysql -h db.happywithyogamoney.fun -uroot -p$(DB_Password) -e 'SHOW DATABASES;'
+if [ $? -ne 0 ]
+then 
+    mysql_secure_installation --set-root-pass -p$(DB_Password) &>>$LOG_FILE
+else 
+    echo -e "$G You Already setup the Password for mySQL..so, we are skipping now .... $N"
+fi
+
 
 echo -e "$Y Mysql Installation is going G O O D...$N"
