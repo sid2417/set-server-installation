@@ -13,7 +13,7 @@ SRCIPT_NAME=$(echo "$0" | cut -d "." -f1)
 LOG_FILE=/tmp/$SRCIPT_NAME+$TIME_STAMP.log
 
 echo "Please Enter Your mysql root password : "
-read DB_Password
+read -s DB_Password
 
 # UserId # 
 USER_ID=$(id -u)
@@ -48,7 +48,7 @@ VALIDATE $? "Your mysql-server Starting is :: "
 #VALIDATE $? "Your mysql-server set up password is :: " 
 
 
-mysql -h db.happywithyogamoney.fun -uroot -p$(DB_Password) -e 'SHOW DATABASES;'
+mysql -h db.happywithyogamoney.fun -uroot -p$(DB_Password) -e 'SHOW DATABASES;' &>>$LOG_FILE
 if [ $? -ne 0 ]
 then 
     mysql_secure_installation --set-root-pass -p$(DB_Password) &>>$LOG_FILE
