@@ -34,13 +34,13 @@ VALIDATE()
     fi 
 }
 
-dnf install mysql-server
+dnf install mysql-server -y &>>$LOG_FILE
 VALIDATE $? "Your mysql-server Installation is :: " 
 
-dnf enable mysqld
+systemctl enable mysqld &>>$LOG_FILE
 VALIDATE $? "Your mysql-server Enablind is :: " 
 
-dnf start mysqld
+systemctl start mysqld &>>$LOG_FILE
 VALIDATE $? "Your mysql-server Starting is :: " 
 
 mysql_secure_installation --set-root-pass -p$(DB_Password) &>>$LOG_FILE
