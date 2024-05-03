@@ -8,7 +8,7 @@ N="\e[0m"
 # Timestamp 
 TIME_STAMP=$(date +%F-%H-%M-%S)
 #SrciptName
-SRCIPT_NAME=$(echo "$0" | cut -d "." -%f1)
+SRCIPT_NAME=$(echo "$0" | cut -d "." -f1)
 # logFile
 LOG_FILE=/tmp/$SRCIPT_NAME+$TIME_STAMP.log
 
@@ -52,6 +52,7 @@ mysql -h db.happywithyogamoney.fun -uroot -p$(DB_Password) -e 'SHOW DATABASES;'
 if [ $? -ne 0 ]
 then 
     mysql_secure_installation --set-root-pass -p$(DB_Password) &>>$LOG_FILE
+    VALIDATE $? "MySQL Root password Setup : "
 else 
     echo -e "$G You Already setup the Password for mySQL..so, we are skipping now .... $N"
 fi
