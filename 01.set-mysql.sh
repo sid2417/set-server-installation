@@ -15,8 +15,8 @@ LOG_FILE=/tmp/$SRCIPT_NAME+$TIME_STAMP.log
 USER_ID=$(id -u)
 if [ $USER_ID -ne 0 ]
 then 
-    echo "Please Provide SUDO ACCESS...."
+    echo -e "$R Please Provide SUDO ACCESS....$N"
 else
-    echo "You Already Sudo User"
+    echo -e "$G You Already Sudo User $N"
 fi
 
