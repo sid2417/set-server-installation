@@ -13,7 +13,8 @@ SRCIPT_NAME=$(echo "$0" | cut -d "." -f1)
 LOG_FILE=/tmp/$SRCIPT_NAME+$TIME_STAMP.log
 
 echo "Please Enter Your mysql root password : "
-read -s DB_Password
+read DB_Password
+#read -s DB_Password
 
 # UserId # 
 USER_ID=$(id -u)
