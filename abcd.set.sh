@@ -1,40 +1,13 @@
 #!/bin/bash/
-set -e
 
-handle_error(){
-    echo "Error occured at line number: $1, error command: $2"
-}
-
-trap 'handle_error ${LINENO} "$BASH_COMMAND"' ERR
-
-# color 
-R="\e[31m"
-G="\e[32m"
-Y="\e[33m"
-N="\e[0m"
-# Timestamp 
-TIME_STAMP=$(date +%F-%H-%M-%S)
-#SrciptName
-SRCIPT_NAME=$(echo "$0" | cut -d "." -f1)
-# logFile
-LOG_FILE=/tmp/$SRCIPT_NAME+$TIME_STAMP.log
-
-# UserId # 
-USER_ID=$(id -u)
-if [ $USER_ID -ne 0 ]
-then 
-    echo -e "$R Please Provide SUDO ACCESS....$N"
-else
-    echo -e "$G You Already Sudo User $N"
-fi
+# ./<script-name>.sh
+source ./common.sh
 
 echo "Please Enter Your mysql root password : "
 read DB_Password
 #read -s DB_Password
 
-
-
-dnf install mysql-serverrr -y &>>$LOG_FILE
+dnf install mysql-server -y &>>$LOG_FILE
 
 systemctl enable mysqld &>>$LOG_FILE
 
