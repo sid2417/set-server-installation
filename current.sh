@@ -11,3 +11,17 @@ source ./other.sh
 
 echo "After calling other script, course: $COURSE"
 
+
+Before calling other script, course: DevOps from Current Script
+Process ID of current shell script: 4413
+Variable value from Other script: DevOps from Other Script
+Process ID of other script: 4414
+After calling other script, course: DevOps from Current Script
+
+
+
+Before calling other script, course: DevOps from Current Script
+Process ID of current shell script: 4432
+Variable value from Other script: DevOps from Other Script
+Process ID of other script: 4432
+After calling other script, course: DevOps from Other Script
