@@ -12,7 +12,7 @@ dnf install mysql-server -y &>>$LOG_FILE
 systemctl enable mysqld &>>$LOG_FILE
 
 
-systemctl start mysqlddd &>>$LOG_FILE
+systemctl start mysqld &>>$LOG_FILE
 
 
 #mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOG_FILE
