@@ -1,15 +1,12 @@
 #!/bin/bash
 
-echo "This is current script"
-VARIABLE="current--script"
-echo $VARIABLE
-echo "now current script is running..."
-echo "this is current script: $$"
-echo "this is current script: $0"
+COURSE="DevOps from Current Script"
 
-source ./other.sh
+echo "Before calling other script, course: $COURSE"
+echo "Process ID of current shell script: $$"
 
-echo "This is current script"
-VARIABLE="current--script"
-echo $VARIABLE
-echo "now current script is running..."
+#./16-other-script.sh
+
+source ./16-other-script.sh
+
+echo "After calling other script, course: $COURSE"
