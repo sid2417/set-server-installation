@@ -3,4 +3,7 @@
 
 echo "this is other script"
 VARIABLE="OTHER--script"
+echo $VARIABLE
 
+echo "this is other script"
+VARIABLE="OTHER--script"
