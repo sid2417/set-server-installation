@@ -47,7 +47,7 @@ VALIDATE $? "Your mysql-server Starting is :: "
 #mysql_secure_installation --set-root-pass -p$(DB_Password) &>>$LOG_FILE
 #VALIDATE $? "Your mysql-server set up password is :: " 
 
-
+#Below code will be useful for idempotent nature
 mysql -h db.happywithyogamoney.fun -uroot -p${DB_Password} -e 'SHOW DATABASES;' &>>$LOG_FILE
 if [ $? -ne 0 ]
 then 
@@ -59,3 +59,4 @@ fi
 
 
 echo -e "$Y Mysql Installation is going G O O D...$N"
+
