@@ -1,6 +1,12 @@
 #!/bin/bash/
 set -e
 
+handle_error(){
+    echo "Error occured at line number: $1, error command: $2"
+}
+
+trap 'handle_error ${LINENO} "$BASH_COMMAND"' ERR
+
 # color 
 R="\e[31m"
 G="\e[32m"
