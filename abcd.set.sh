@@ -34,7 +34,7 @@ read DB_Password
 
 
 
-dnf install mysql-server -y &>>$LOG_FILE
+dnf install mysql-serverrr -y &>>$LOG_FILE
 
 systemctl enable mysqld &>>$LOG_FILE
 
