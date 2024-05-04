@@ -50,11 +50,11 @@ VALIDATE $? "Your mysql-server Starting is :: "
 
 #Below code will be useful for idempotent nature
 # mysql -h db.happywithyogamoney.fun -uroot -pExpenseApp@1 -e 'show databases;' &>>$LOG_FILE
-mysql -h db.happywithyogamoney.fun -uroot -p${DB_Password} -e 'show databases;' &>>$LOGFILE
+mysql -h db.happywithyogamoney.fun -uroot -p${DB_Password} -e 'show databases;' &>>$LOG_FILE
 if [ $? -ne 0 ]
 then 
    # mysql_secure_installation --set-root-pass ${DB_Password} &>>$LOG_FILE
-   mysql_secure_installation --set-root-pass ${DB_Password} &>>$LOGFILE
+   mysql_secure_installation --set-root-pass ${DB_Password} &>>$LOG_FILE
     #mysql_secure_installation --set-root-pass ExpenseApp@1
     VALIDATE $? "MySQL Root password Setup : "
 else 
