@@ -12,8 +12,8 @@ SRCIPT_NAME=$(echo "$0" | cut -d "." -f1)
 # logFile
 LOG_FILE=/tmp/$SRCIPT_NAME+$TIME_STAMP.log
 
-echo "Please Enter Your mysql root password : "
-read DB_Password
+#echo "Please Enter Your mysql root password : "
+#read DB_Password
 #read -s DB_Password
 
 # UserId # 
@@ -49,14 +49,14 @@ VALIDATE $? "Your mysql-server Starting is :: "
 #VALIDATE $? "Your mysql-server set up password is :: " 
 
 #Below code will be useful for idempotent nature
-mysql -h db.happywithyogamoney.fun -uroot -p${DB_Password} -e 'show databases;' &>>$LOG_FILE
+mysql -h db.happywithyogamoney.fun -uroot -p{ExpenseApp@1} -e 'show databases;' &>>$LOG_FILE
 if [ $? -ne 0 ]
 then 
-    mysql_secure_installation --set-root-pass ${DB_Password} &>>$LOG_FILE
+   # mysql_secure_installation --set-root-pass ${DB_Password} &>>$LOG_FILE
+    mysql_secure_installation --set-root-pass ExpenseApp@1
     VALIDATE $? "MySQL Root password Setup : "
 else 
     echo -e "$G You Already setup the Password for mySQL..so, we are skipping now .... $N"
 fi
-
 
 echo -e "$Y Mysql Installation is going G O O D...$N"
