@@ -1,4 +1,5 @@
 #!/bin/bash/
+set -e
 
 # color 
 R="\e[31m"
