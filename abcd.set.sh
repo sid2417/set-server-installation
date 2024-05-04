@@ -1,7 +1,7 @@
 #!/bin/bash/
 
 # ./<script-name>.sh
-source ./common.sh
+#source ./common.sh
 
 echo "Please Enter Your mysql root password : "
 read DB_Password
