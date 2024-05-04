@@ -21,16 +21,6 @@ else
     echo -e "$G You Already Sudo User $N"
 fi
 
-VALIDATE()
-{
-    if [ $? -ne 0 ]
-    then 
-        echo -e "$R $2 FAILED $N"
-    else
-         echo -e "$G $2 SUCCESS $N"
-    fi 
-}
-
 echo "Please Enter Your mysql root password : "
 read DB_Password
 #read -s DB_Password
@@ -38,13 +28,12 @@ read DB_Password
 
 
 dnf install mysql-server -y &>>$LOG_FILE
-VALIDATE $? "Your mysql-server Installation is :: " 
 
 systemctl enable mysqld &>>$LOG_FILE
-VALIDATE $? "Your mysql-server Enablind is :: " 
+
 
 systemctl start mysqld &>>$LOG_FILE
-VALIDATE $? "Your mysql-server Starting is :: " 
+
 
 #mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOG_FILE
 #mysql_secure_installation --set-root-pass -p$(DB_Password) &>>$LOG_FILE
@@ -58,7 +47,7 @@ then
    # mysql_secure_installation --set-root-pass ${DB_Password} &>>$LOG_FILE
    mysql_secure_installation --set-root-pass ${DB_Password} &>>$LOG_FILE
     #mysql_secure_installation --set-root-pass ExpenseApp@1
-    VALIDATE $? "MySQL Root password Setup : "
+    
 else 
     echo -e "$G You Already setup the Password for mySQL..so, we are skipping now .... $N"
 fi
