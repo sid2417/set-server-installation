@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "This is current script"
-VARIABLE=$("CURRENT-SCRIPT")
+VARIABLE=$(current)
 
 echo $VARIABLE
 
